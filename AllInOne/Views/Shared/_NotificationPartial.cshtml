@@ -1,7 +1,7 @@
-﻿@if (TempData["success"] != null)
+﻿@if (TempData["type"] != null)
 {
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>@TempData["success"]</strong>
+        <strong>@TempData["msg"]</strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 }
@@ -9,7 +9,7 @@
 @if (TempData["error"] != null)
 {
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>@TempData["error"]</strong>
+        <strong>@TempData["msg"]</strong>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 }

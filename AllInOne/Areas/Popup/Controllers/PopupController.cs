@@ -16,8 +16,14 @@ namespace AllInOne.Areas.Popup.Controllers
 
         public IActionResult Index()
         {
+            return View();
+        }
+
+        [HttpGet]
+        public JsonResult GetData()
+        {
             var data = _context.employeePopups.ToList();
-            return View(data);
+            return Json(data);
         }
 
         [HttpGet]
@@ -31,16 +37,14 @@ namespace AllInOne.Areas.Popup.Controllers
         [HttpPost]
         public IActionResult Create(EmployeePopup form)
         {
-            if(form.Id == 0)
+            if (form.Id == 0)
             {
                 _context.employeePopups.Add(form);
-                TempData["success"] = "Record saved successfully";
             }
             else
             {
                 _context.employeePopups.Update(form);
-                TempData["success"] = "Record updated successfully";
-            }          
+            }
             _context.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -49,7 +53,7 @@ namespace AllInOne.Areas.Popup.Controllers
         public IActionResult Edit(int Id)
         {
             var data = _context.employeePopups.FirstOrDefault(x => x.Id == Id);
-            if(data == null)
+            if (data == null)
             {
                 return Json(false);
             }
@@ -61,14 +65,20 @@ namespace AllInOne.Areas.Popup.Controllers
         public IActionResult Delete(int Id)
         {
             var data = _context.employeePopups.Find(Id);
-            if(data == null)
+            if (data == null)
             {
                 return NotFound();
             }
             _context.employeePopups.Remove(data);
             _context.SaveChanges();
-            TempData["success"] = "Record deleted successfully";
-            return RedirectToAction("Index");
+            return Ok();
+        }
+
+        public IActionResult AlertMessage(string type, string msg)
+        {
+            TempData["type"] = type;
+            TempData["msg"] = msg;
+            return PartialView("_NotificationPartial");
         }
     }
 }
