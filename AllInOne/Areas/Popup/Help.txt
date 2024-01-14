@@ -1,0 +1,13 @@
+﻿Q1. for Popup validation ?. // Popup Controller
+  if we want to use popup partial view validation we use client side request for example.
+  we use this *** line in layout view or same view.
+    //  @await RenderSectionAsync("Scripts", required: false) 
+    ***  <partial name="_ValidationScriptsPartial" /> ***
+
+Q.1 We have implemented Partial Notification in this module.
+ check layout view for notification whole project.
+
+_____________________________________________________________________
+
+
+

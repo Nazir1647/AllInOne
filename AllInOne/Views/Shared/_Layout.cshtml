@@ -31,6 +31,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <partial name="_NotificationPartial" />
             @RenderBody()
         </main>
     </div>
@@ -43,7 +44,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/build/js/common.min.js"></script>
+    <script src="~/js/popup.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <partial name="_ValidationScriptsPartial" />
 </body>
 </html>
